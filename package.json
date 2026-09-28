@@ -1,0 +1,31 @@
+{
+  "name": "ta-vp",
+  "version": "1.0.0",
+  "description": "veebiprogrammeerimise tundides tehtud veeb",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://angmon-tlu@github.com/angmon-tlu/TA-vp.git"
+  },
+  "keywords": [
+    "node.js",
+    "veeb",
+    "tallinna",
+    "ülikool",
+    "dti",
+    "üliõpilane",
+    "koolitöö"
+  ],
+  "author": "Vladimir Vlassov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/angmon-tlu/TA-vp/issues"
+  },
+  "homepage": "https://github.com/angmon-tlu/TA-vp#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
