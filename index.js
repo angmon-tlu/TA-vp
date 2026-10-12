@@ -28,6 +28,7 @@ app.use(bodyparser.urlencoded({extended: false}))
 }); */
 
 //marsruudid
+
 app.get('/', (req, res)=>{
 	//res.send('Express.js läks käima ja serveerib meile veebi.');
 	const dayNow = dateET.fullWeekday();
@@ -55,11 +56,11 @@ app.get('/vlr', async (req, res)=>{
 	res.render('vlr');
 });
 
-app.get('/regvisit', (req, res)=>{
+/* app.get('/regvisit', (req, res)=>{
 	res.render('regvisit');
-});
+}); */
 
-app.post('/regvisit', async (req, res)=>{
+/* app.post('/regvisit', async (req, res)=>{
 	try {
 		const dayNow = dateET.fullWeekday();
 		const dateNow = dateET.fullDate(0);
@@ -72,9 +73,9 @@ app.post('/regvisit', async (req, res)=>{
 		console.log(err);
 		res.render('regvisit');
 	}
-});
+}); */
 
-/* app.get('/viimane', async (req, res)=>{
+app.get('/viimane', async (req, res)=>{
 	try {
 		//read txt
 		const data = await fs.readFile(textRef, "utf8");
@@ -85,13 +86,20 @@ app.post('/regvisit', async (req, res)=>{
 		//error
 		console.log('viga');
 	}
-}); */
-
-app.get('/eestifilm', (req, res)=>{
-	res.render('eestifilm');
 });
 
-app.get('/eestifilm/inimesed', async (req, res)=>{
+const regvisitRouter = require('./routes/regvisitRoutes');
+app.use('/regvisit', regvisitRouter);
+
+//EESTI FILMI marsruudid
+const eestifilmRouter = require('./routes/eestifilmRoutes');
+app.use('/eestifilm', eestifilmRouter);
+
+/* app.get('/eestifilm', (req, res)=>{
+	res.render('eestifilm');
+}); */
+
+/* app.get('/eestifilm/inimesed', async (req, res)=>{
 	//console.log('Andmebaasiserver on: ' + process.env.DB_HOST);
 	let conn;
 	try {
@@ -115,13 +123,13 @@ app.get('/eestifilm/inimesed', async (req, res)=>{
 			await conn.end();
 		}
 	}
-});
+}); */
 
-app.get('/eestifilm/inimesed_add', (req, res)=>{
+/* app.get('/eestifilm/inimesed_add', (req, res)=>{
 	res.render('eestifilminimesed_add', {notice: 'Ootan sisestust!'});
-});
+}); */
 
-app.post('/eestifilm/inimesed_add', async (req, res)=>{
+/* app.post('/eestifilm/inimesed_add', async (req, res)=>{
 	console.log(req.body);
 	//kontrollime andmete olemasolu
 	if(!req.body.firstNameInput || !req.body.lastNameInput || req.body.bornInput >= new Date()) {
@@ -158,6 +166,6 @@ app.post('/eestifilm/inimesed_add', async (req, res)=>{
 			await conn.end();
 		}
 	}
-});
+}); */
 
 app.listen(5108);
